@@ -7,22 +7,41 @@
 #*-------------------------------------------------------------------------*
 import sys
 
-def factorial(num):
-    if num < 0:
+def factorial(num): 
+    if num < 0: 
         print("El factorial de un número negativo no existe")
-    elif num == 0:
+        return None
+    elif num == 0: 
         return 1
-    else:
+    else: 
         fact = 1
-        while num > 1:
-            fact *= num
+        while num > 1: 
+            fact *= num 
             num -= 1
-        return fact
+        return fact 
 
 if len(sys.argv) == 1:
-    num = int(input("Por favor ingrese un número para calcular su factorial: "))
-else:
-    num = int(sys.argv[1])
+    print("Debe informar un rango de números (desde-hasta)!")
+    sys.exit()
+    
+args = sys.argv[1].split('-')
+if len(args) != 2:
+    print("Formato incorrecto para el rango. Debe ser desde-hasta, por ejemplo, 4-8.")
+    sys.exit()
 
-print("El factorial de", num, "! es", factorial(num))
+try:
+    start = int(args[0])
+    end = int(args[1])
+except ValueError:
+    print("Los valores del rango deben ser números enteros.")
+    sys.exit()
+
+if start > end:
+    print("El valor 'desde' no puede ser mayor que el valor 'hasta'.")
+    sys.exit()
+
+print("Factoriales en el rango", start, "-", end, ":")
+
+for num in range(start, end + 1):
+    print("Factorial de", num, "! es", factorial(num))
 
