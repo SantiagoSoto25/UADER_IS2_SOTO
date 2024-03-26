@@ -21,17 +21,24 @@ def factorial(num):
         return fact 
 
 if len(sys.argv) == 1:
-    print("Debe informar un rango de números (desde-hasta)!")
+    print("Debe informar un rango de números (desde-hasta o -hasta o desde-)")
     sys.exit()
-    
+
 args = sys.argv[1].split('-')
 if len(args) != 2:
-    print("Formato incorrecto para el rango. Debe ser desde-hasta, por ejemplo, 4-8.")
+    print("Formato incorrecto para el rango. Debe ser desde-hasta, desde- o -hasta.")
     sys.exit()
 
 try:
-    start = int(args[0])
-    end = int(args[1])
+    if args[0] == '':
+        start = 1
+    else:
+        start = int(args[0])
+        
+    if args[1] == '':
+        end = 60
+    else:
+        end = int(args[1])
 except ValueError:
     print("Los valores del rango deben ser números enteros.")
     sys.exit()
@@ -44,4 +51,6 @@ print("Factoriales en el rango", start, "-", end, ":")
 
 for num in range(start, end + 1):
     print("Factorial de", num, "! es", factorial(num))
+
+#La ultima modificación
 
