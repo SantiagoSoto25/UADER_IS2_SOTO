@@ -15,4 +15,6 @@ for num in range(lower, upper + 1):
        else:
            print(num)
 
+#El codigo resurgio al tercer dia
 
+#Otra vez
